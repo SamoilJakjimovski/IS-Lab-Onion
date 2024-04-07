@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BApp.Domain\BApp.Domain.csproj" />
+    <ProjectReference Include="..\BApp.Repository\BApp.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

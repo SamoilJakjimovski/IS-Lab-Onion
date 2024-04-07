@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BApp.Domain.Domain;
+using System.ComponentModel.DataAnnotations;
 
 namespace BApp.Domain
 {
-    public class Apartment
+    public class Apartment : BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
+        
         [Required]
         public string ApartmentName { get; set; }
         [Required]

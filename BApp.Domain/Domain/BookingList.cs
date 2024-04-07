@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BApp.Domain.Domain;
+using System.ComponentModel.DataAnnotations;
 
 namespace BApp.Domain
 {
-    public class BookingList
+    public class BookingList : BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
+        
         public string? OwnerId { get; set; }
         public BookingApplicationUser? Owner { get; set; }
         public virtual ICollection<BookReservation>? BookReservations { get; set; }

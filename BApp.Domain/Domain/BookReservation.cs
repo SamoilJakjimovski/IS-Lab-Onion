@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BApp.Domain.Domain;
+using System.ComponentModel.DataAnnotations;
 
 namespace BApp.Domain
 {
-    public class BookReservation
+    public class BookReservation : BaseEntity
     {
-        [Key]
-
-        public Guid Id { get; set; }
+       
         public Guid ReservationId { get; set; }
         public Guid BookingListId { get; set; }
         public Reservation? Reservation { get; set; }
