@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BApp.Service.Interface
 {
-    internal interface IReservationService
+    public interface IReservationService
     {
-        List<Reservation> GetReservations();
-        Reservation GetReservationById(Guid? id);
+        IQueryable<Reservation> GetReservations();
+        IQueryable<Reservation> GetReservationById(Guid? id);
         void CreateNewReservation (Reservation p);
         void UpdateReservation (Reservation p);
         void DeleteReservation (Guid id);

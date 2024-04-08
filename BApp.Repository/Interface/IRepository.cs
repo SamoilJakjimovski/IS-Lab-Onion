@@ -8,8 +8,8 @@ namespace BApp.Repository.Interface
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
-        T Get(Guid? id);
+        IQueryable<T> GetAll();
+        IQueryable<T> Get(Guid? id);
         void Insert(T entity);
 
         void InsertMany(IEnumerable<T> entities);

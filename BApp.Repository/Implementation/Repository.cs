@@ -21,14 +21,14 @@ namespace BApp.Repository.Implementation
             this.context = context;
             entities = context.Set<T>();
         }
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return entities.AsEnumerable();
+            return entities;
         }
 
-        public T Get(Guid? id)
+        public IQueryable<T> Get(Guid? id)
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return entities.Where(s => s.Id == id);
         }
         public void Insert(T entity)
         {

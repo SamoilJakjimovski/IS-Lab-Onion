@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BApp.Service.Interface
 {
-    internal interface IBookingListService
+    public interface IBookingListService
     {
         BookingListDto getBookingListInfo (string userId);
         bool deleteFromBookingList (string userId, Guid reservationId);

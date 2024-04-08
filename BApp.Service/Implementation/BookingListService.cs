@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BApp.Service.Implementation
 {
-    internal class BookingListService : IBookingListService
+    public class BookingListService : IBookingListService
     {
         private readonly IRepository<BookingList> _bookingListRepository;
         private readonly IRepository<Reservation> _reservationRepository;

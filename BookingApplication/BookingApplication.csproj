@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BApp.Repository\BApp.Repository.csproj" />
+	  <ProjectReference Include="..\BApp.Service\BApp.Service.csproj"/>
+
   </ItemGroup>
 
 </Project>

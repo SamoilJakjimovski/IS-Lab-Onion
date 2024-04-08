@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BApp.Service.Implementation
 {
-    internal class ReservationService : IReservationService
+    public class ReservationService : IReservationService
     {
         private readonly IRepository<Reservation> _reservationRepository;
   
@@ -28,19 +28,19 @@ namespace BApp.Service.Implementation
 
         public void DeleteReservation(Guid id)
         {
-            var reservation = _reservationRepository.Get(id);
+            var reservation = _reservationRepository.Get(id).FirstOrDefault();
             _reservationRepository.Delete(reservation);
 
         }
 
-        public Reservation GetReservationById(Guid? id)
+        public IQueryable<Reservation> GetReservationById(Guid? id)
         {
             return _reservationRepository.Get(id);
         }
 
-        public List<Reservation> GetReservations()
+        public IQueryable<Reservation> GetReservations()
         {
-            return _reservationRepository.GetAll().ToList();
+            return _reservationRepository.GetAll();
         }
 
         public void UpdateReservation(Reservation p)
