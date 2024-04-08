@@ -29,7 +29,9 @@ namespace BApp.Repository.Implementation
         public BookingApplicationUser Get(string id)
         {
             var strGuid = id.ToString();
-            return entities.Include(z => z.BookingList).Include(z => z.BookingList.BookReservations).Include("BookingList.BookReservations.Reservation").SingleOrDefault(s => s.Id == strGuid);
+            return entities.Include(z => z.BookingList).Include(z => z.BookingList.BookReservations).Include("BookingList.BookReservations")
+                .Include("BookingList.BookReservations.Reservation")
+                .Include("BookingList.BookReservations.Reservation.Apartment").SingleOrDefault(s => s.Id == strGuid);
         }
         public void Insert(BookingApplicationUser entity)
         {

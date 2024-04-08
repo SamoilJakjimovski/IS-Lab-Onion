@@ -12,7 +12,7 @@ namespace BApp.Repository.Interface
         IQueryable<T> Get(Guid? id);
         void Insert(T entity);
 
-        void InsertMany(IEnumerable<T> entities);
+        void InsertMany(List<T> entities);
         void Update(T entity);
         void Delete(T entity);
     }

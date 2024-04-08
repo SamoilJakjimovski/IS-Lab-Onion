@@ -21,7 +21,7 @@ namespace BApp.Service.Implementation
 
         public IEnumerable<Apartment> GetApartments()
         {
-           return _repository.GetAll();
+           return _repository.GetAll().AsEnumerable();
         }
     }
 }

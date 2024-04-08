@@ -27,37 +27,21 @@ namespace BApp.Service.Implementation
 
         public bool AddToBookingListConfirmed(BookReservation model, string userId)
         {
+            var user = this.userRepository.Get(userId);
+            var bookingList = user.BookingList;
+            BookReservation itemToAdd = new BookReservation
+            {
+                Id = Guid.NewGuid(),
+                Reservation = model.Reservation,
+                ReservationId = model.ReservationId,
+                BookingList = bookingList,
+                BookingListId = bookingList.Id,
+                NumberOfNights = model.NumberOfNights
+            };
 
-            if (userId != null) { 
+            _bookReservationRepository.Insert(itemToAdd);
+            return true;
 
-                var user = userRepository.Get(userId);
-
-                var bookingList = user?.BookingList;
-
-                var reservation = _reservationRepository.Get(model.ReservationId);
-
-                if (reservation != null && bookingList != null)
-                {
-
-
-                    BookReservation br = new BookReservation()
-                    {
-                        Id = Guid.NewGuid(),
-                        BookingListId = bookingList.Id,
-                        BookingList = bookingList,
-                        Reservation = model.Reservation,
-                        ReservationId = model.ReservationId,
-                        NumberOfNights = model.NumberOfNights
-                    };
-
-                    bookingList?.BookReservations?.Add(br);
-
-                    _bookingListRepository.Update(bookingList);
-
-                    return true;
-                }
-        }
-            return false;
         }
 
         public bool book(string userId)
@@ -77,7 +61,7 @@ namespace BApp.Service.Implementation
                     NumberOfNights = z.NumberOfNights
                 });
 
-                _bookReservationRepository.InsertMany(allBookReservations);
+               _bookReservationRepository.InsertMany(allBookReservations.ToList());
                 bookingList?.BookReservations.Clear();
                 _bookingListRepository.Update(bookingList);
                 return true;

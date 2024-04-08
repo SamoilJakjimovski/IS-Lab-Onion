@@ -60,7 +60,7 @@ namespace BApp.Repository.Implementation
             context.SaveChanges();
         }
 
-        public void InsertMany(IEnumerable<T> all)
+        public void InsertMany(List<T> all)
         {
             entities.AddRange(all);
             context.SaveChanges();
