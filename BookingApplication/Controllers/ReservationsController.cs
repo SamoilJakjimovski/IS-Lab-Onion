@@ -166,7 +166,7 @@ namespace BookingApplication.Controllers
             _bookingListService.AddToBookingListConfirmed(model, userId);
 
 
-            return View("Index", _reservationService.GetReservations());
+            return View("Index", _reservationService.GetReservations().Include("Apartment"));
         }
 
 
